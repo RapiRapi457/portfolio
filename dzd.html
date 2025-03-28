@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaidot dzimšanas dienu</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gaidot dzimšanas dienu..</h1>
+        <hr>
+        
+        <form>
+            <p>Ievadi pilnu datumu, kad Tev būs tuvākā dzimšanas diena</p>
+            
+            <label for="gads">Gads:</label>
+            <input type="text" id="gads" name="gads">
+
+            <label for="menesis">Mēnesis:</label>
+            <input type="text" id="menesis" name="menesis">
+
+            <label for="datums">Diena:</label>
+            <input type="text" id="datums" name="datums">
+
+            <button type="button" id="poga" onclick="dienas()">Aprēķināt dienu skaitu līdz dzimšanas dienai</button>
+        </form>
+
+        <h2>Līdz svētkiem atlikušas</h2>
+        <input type="text" id="dienas" name="dienas" readonly> dienas :)
+    </div>
+
+    <script>
+        function dienas() {
+            let gads = document.getElementById("gads").value;
+            let menesis = document.getElementById("menesis").value;
+            let datums = document.getElementById("datums").value;
+
+            let dzDiena = new Date(gads, menesis - 1, datums);
+            let sodiena = new Date();
+            let starpiba = dzDiena - sodiena;
+
+            let atlikusasDienas = Math.ceil(starpiba / (1000 * 60 * 60 * 24));
+            if (atlikusasDienas < 0) {
+                dzDiena.setFullYear(sodiena.getFullYear() + 1);
+                starpiba = dzDiena - sodiena;
+                atlikusasDienas = Math.ceil(starpiba / (1000 * 60 * 60 * 24));
+            }
+
+            document.getElementById("dienas").value = atlikusasDienas;
+        }
+    </script>
+</body>
+</html>

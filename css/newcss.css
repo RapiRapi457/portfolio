@@ -51,6 +51,23 @@ img {
     border-radius: 10px;
 }
 
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #1565c0;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 2px solid #1565c0;
+    border-radius: 5px;
+}
+
+a:hover { 
+    background-color: #1565c0;
+    color: white;
+}
+    
+    
+
 footer {
     text-align: center;
     padding: 10px;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informācijas daudzuma mērvienības</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Informācijas daudzuma mērvienības</h1>
+
+        <form>
+            <label for="gb">GB:</label>
+            <input type="text" id="gb" oninput="convertGB()">
+
+            <label for="mb">Izteikt megabaitos:</label>
+            <input type="text" id="mb" readonly> MB
+
+            <label for="mib">Izteikt mebibaitos:</label>
+            <input type="text" id="mib" readonly> MiB
+
+            <button type="button" onclick="convertGB()">Pārrēķināt</button>
+        </form>
+    </div>
+
+    <script>
+        function convertGB() {
+            let gb = parseFloat(document.getElementById("gb").value);
+            if (!isNaN(gb)) {
+                document.getElementById("mb").value = gb * 1000; // 1GB = 1000MB
+                document.getElementById("mib").value = gb * 953.67; // 1GB ≈ 953.67 MiB
+            }
+        }
+    </script>
+</body>
+</html>
